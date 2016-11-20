@@ -1,0 +1,8 @@
+---
+title: ""
+output: html_document
+---
+
+## Your Lab Report
+
+You are now ready to generate your lab report. Pleas fill in the name of your group members and then you can download your report. This will be in a Microsoft word format.

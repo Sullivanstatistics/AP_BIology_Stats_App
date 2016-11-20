@@ -1,0 +1,195 @@
+#AP Biology Lab report
+<br />
+*`r input$auth_names`* <br />   
+*`r as.character(format(Sys.Date(), format="%B %d, %Y"))`*
+
+<br />
+
+
+### The Data
+
+`r input$text_data`
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+dataset <- datasetInput()
+library(knitr)
+kable(dataset)
+```
+
+
+
+
+<br />
+
+### Statistical Summaries
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+dataset <- datasetInput()
+      
+      
+      
+      dataset2 <- Filter(is.numeric, dataset)
+      means <- round(apply(dataset2,2 , mean),2)
+      median <- apply(dataset2, 2, median)
+      mode <- apply(dataset2, 2, Mode)
+      range <- apply(dataset2,2, range)
+      sd <- round(apply(dataset2, 2, sd),2)
+    names <- names(dataset2)
+      
+      
+      matrix <- matrix(c( names, means, median,mode, range, sd), ncol=6)
+      colnames(matrix) <- c("Names", "Mean", "Median", "Mode", "Range", "SD")
+      kable(matrix)
+```
+
+#### Continuous Variable Summaries
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+      dataset <- datasetInput()
+      
+      
+      
+      dataset2 <- Filter(Negate(is.numeric), dataset)
+    count(dataset2)
+```
+
+
+`r input$text_summary`
+
+
+### The Hypothesis
+
+`r input$text_quest`
+
+
+### Which types of variables are Going to be used
+
+`r input$text_vars`
+
+
+### Graphs
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+dataset <- datasetInput()
+
+ if(input$var_type==1){
+   if(input$gtype==1){
+     x1 <- dataset[,which(names(dataset)==input$x1)]
+     x2 <- dataset[,which(names(dataset)==input$x2)]
+     
+     boxplot(x1,x2,data=dataset, main = paste(input$title), names=c(input$x1, input$x2), xlab=paste(input$xlab), ylab=paste(input$ylab))
+     
+   } else if(input$gtype==2){
+     
+     x1 <- dataset[,which(names(dataset)==input$x1)]
+     x2 <- dataset[,which(names(dataset)==input$x2)]
+    
+     
+     plot(x1,x2,data=dataset, main = paste(input$title), xlab=paste(input$xlab), ylab=paste(input$ylab))
+    
+   }
+ } else if (input$var_type==2){
+
+   x1 <- dataset[,which(names(dataset)==input$x1)]
+   x2 <- dataset[,which(names(dataset)==input$x2)]
+   
+   boxplot(x1~x2,data=dataset, main = paste(input$title),  xlab=paste(input$xlab), ylab=paste(input$ylab))
+   
+   
+ } else if (input$var_type==3){
+   
+   if(input$gtype==1){
+     
+     counts <- table(dataset[,which(names(dataset)==input$x1)],dataset[,which(names(dataset)==input$x2)] )
+     
+     barplot(counts,main = paste(input$title), xlab=paste(input$xlab), ylab=paste(input$ylab),
+             legend = rownames(counts), beside=TRUE)
+     
+   } else if(input$gtype==2){
+     
+     counts <- table(dataset[,which(names(dataset)==input$x1)],dataset[,which(names(dataset)==input$x2)] )
+     mosaicplot(counts)
+  
+   }
+   
+ }      
+      
+```
+
+
+`r input$text_graphs`
+
+
+### Statistical Test
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+dataset <- datasetInput()
+      x1    <- dataset[,which(names(dataset)==input$x1)]
+      x2    <- dataset[,which(names(dataset)==input$x2)]
+      
+      
+      if(input$var_type==1){
+        if(input$ttype==1){
+            t<- t.test(x1,x2, paired=TRUE)
+            t.vec <- as.data.frame(cbind(t$statistic, t$p.value))
+            names(t.vec)<- c("t-Statistic", "P-value")
+           print(t.vec)
+          } else if(input$ttype==2){
+          t<- t.test(x1,x2)
+          t.vec <- as.data.frame(cbind(t$statistic, t$p.value))
+          names(t.vec)<- c("t-Statistic", "P-value")
+          print(t.vec)
+        } else if(input$ttype==3){
+          
+          mod <- lm(x2~x1)
+          out <- paste(input$x2)
+          pred <- paste(input$x1)
+          estimate <- round(mod$coefficients[2],2)
+          sums <- summary(mod)
+          stat <- round(sums$coefficients[2,3],2)
+          pval <- round(sums$coefficients[2,4],2)
+          
+          vec <- as.data.frame(cbind(out, pred, estimate, stat, pval))
+          names(vec) <- c("Outcome", "Predictor", "Coefficient", "T-statistic", "P-Value" )
+          print(vec)
+          
+          
+        } } else if(input$var_type==2){
+        if(input$ttype==1){
+          t<- t.test(x1,x2, paired=TRUE)
+          t.vec <- as.data.frame(cbind(t$statistic, t$p.value))
+          names(t.vec)<- c("t-Statistic", "P-value")
+          print(t.vec)
+        }
+        else if(input$ttype==2){
+          t<- t.test(x1,x2)
+          t.vec <- as.data.frame(cbind(t$statistic, t$p.value))
+          names(t.vec)<- c("t-Statistic", "P-value")
+          print(t.vec)
+        } else if(input$ttype==3){
+          a <- aov(x1~x2)
+          f <- summary(a)
+          fval <- f[[1]]$`F value`
+          pval <- f[[1]]$`Pr(>F)`
+          f.vec<-c(fval[1], pval[1])
+          names(f.vec) <- c("F Statistic", "P-value")
+          print(f.vec)
+        }} else if (input$var_type==3){
+          if (input$ttype==1){
+            data <- table(x1, x2)
+            x <- chisq.test(data)
+            x.vec <- c(t$statistic, t$p.value)
+            names(x.vec)<- c("Chi-Square-Statistic", "P-value")
+            print(x.vec)
+          }
+        }
+      
+```
+
+`r input$text_tests`
+
+
+
+

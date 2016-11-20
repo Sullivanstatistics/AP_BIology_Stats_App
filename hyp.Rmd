@@ -1,0 +1,9 @@
+---
+title: ""
+output: html_document
+---
+
+
+## Asking the Right Questions 
+
+We have now considered numerous datasets, picked the data we would like to use and looked and some basic statistical summaries. Now the goal is to consider what question you will try and answer from this data. This question is what we call a hypothesis.

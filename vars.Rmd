@@ -1,0 +1,33 @@
+---
+title: ""
+output: html_document
+---
+
+
+## Choosing the Right Data Types
+
+Now that you have a question in mind, we need to understand what data we are going to use. There are mainly two types of data you will see:
+
+1. **Continuous** - This is data which can be measured down to fractional parts. For example:
+    - Age
+    - Height
+    - Weight
+2. **Categorical** - This is data which represents groups. For example:
+    - Ethnicity
+    - Race
+    - Gender
+
+For the purposes of this lab you will be using a combination of these data types:
+
+1. ***Continuous and Categorical*** - For a continuous and a categorical variable we have 
+  a. Graphs
+    - **Box-Whisker Plots** - We use box-whisker plots to look at the distribution (shape) of the continuous variable split into groups by the categorical.
+  b. Statistical Tests
+    - **t-test** - We can compare a continuous variables in 2 groups with a *t-test*.
+    - **ANOVA**- We can compare a continuous variables in 2 or more groups with *ANOVA*.
+2. ***Categorical and Categorical*** - For 2 categorical variables we have 
+  a. Graphs
+    - **Bar Plots** - We use bar plots to plot the counts of categorical data. 
+    - **Mosaic Plot** - We use mosaic plots to graph multiple categorical data. 
+  b. Statistical Tests
+    - **chi-square test** - We use the chi-square test to compare counts or proportions of categories. 

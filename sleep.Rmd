@@ -1,0 +1,17 @@
+---
+title: ""
+output: html_document
+---
+
+
+## Student's Sleep Data 
+
+This  is data which show the effect of two soporific drugs (increase in hours of sleep compared to control) on 10 patients. The group variable name may be misleading about the data:
+
+- ***They represent measurements on 10 persons, not in groups.***
+
+This data contains 20 observations with the following variables
+        
+-  **extra** - Numeric increase in hours of sleep.
+-  **group** - factor of drug given ( each drug to each person) 
+-  **ID** - Patient ID

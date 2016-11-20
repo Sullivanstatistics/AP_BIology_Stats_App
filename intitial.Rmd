@@ -1,0 +1,32 @@
+---
+title: "Welcome to your AP Biology and Research Class Statistics Lab!"
+output: html_document
+---
+
+
+This Lab will help guide you through the statistical skills that you will need not only to encounter AP Exams but help home skills that are necessary to understand many statistical applications in this world. 
+
+
+## Instructions
+
+The tabs at the top will guide your through the process of completing this lab, these steps are:
+
+1. Choose your Data.
+2. Explore your data. 
+    a. First from the raw data.
+    b. Second from summaries of the data.
+3. Pose a question that can be answered by your data.
+4. Choose the correct graph that displays the data which relates to your question. 
+5. Choose the appropriate test that corresponds to your question. 
+
+
+## Tabs
+
+1. **Home** - The Home tab is where you can find these instructions and the start of the lab. 
+2.  **The Data **- This tab will help you explore and choose data.  
+3. **Data Summary** - This tab has the number summaries and count tables for the variables in the data. 
+4. **Question** - This tab is where you will ask your question. You cannot do any science or statistics without a question to answer.
+5. **Choosing Variables** - This tab is where you choose the best variable type to answer your question.
+6. **Graphs** - In this tab you will make a graph that helps to understand your question.
+7. **Statistical Test** - In this tab you will perform and more importantly interpret the test. 
+8. **Lab Report** - At this point in time you can see the lab report you have generated. Fix any parts that you wish to and then you can print this. 

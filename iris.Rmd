@@ -1,0 +1,21 @@
+---
+title: ""
+output: html_document
+---
+
+
+## Iris Data
+
+This famous (Fisher's or Anderson's) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica. 
+
+This data contains 150 observations with the following variables
+        
+- **Sepal.Length** - Length of sepal in cm.
+- **Sepal.Width** - Width of sepal in cm.
+- **Petal.Length** - Length of petal in cm.
+- **Petal.Width** - Width of petal in cm.
+- **class** - plant species:
+    - Iris Setosa 
+    - Iris Versicolour 
+    - Iris Virginica 
+              
