@@ -8,7 +8,7 @@ shinyUI(
   
  
   
-  navbarPage( "AP Biology Statistics Lab",
+  navbarPage( "AP Biology Statistics Lab", collapsible=TRUE,
     
   tabPanel("Home",
            
